@@ -77,12 +77,12 @@ function ChannelPage({ id, channelName }) {
 
     return (
         <div className="channelBackground">
-            <h2>{channelName || `Channel #${id}`}</h2>
+            <text className="channelName">{channelName || `Channel #${id}`}</text>
             <div className="channelForm">
                 <input
                     ref={postInputRef}
                     type="text"
-                    placeholder="Meow it over"
+                    placeholder="What's the buzz?"
                     required
                     value={input}
                     onChange={(event) => setInput(event.target.value)}
@@ -92,8 +92,8 @@ function ChannelPage({ id, channelName }) {
                         }
                     }}
                 />
-                <button className="channelBttn" onClick={addMessage}>
-                    post
+                <button className="postBttn" onClick={addMessage}>
+                    Post
                 </button>
             </div>
             {messages.length === 0 ? (
@@ -149,7 +149,7 @@ function ChannelPage({ id, channelName }) {
                 <div>
                     <strong>{message.author || 'Anonymous'}:</strong> {message.text}
                 </div>
-                <button onClick={handleReplyButtonClick}>
+                <button className="replyBttn" onClick={handleReplyButtonClick}>
                     {showReplyBox ? 'cancel' : 'reply'}
                 </button>
 
@@ -158,7 +158,7 @@ function ChannelPage({ id, channelName }) {
                         <input
                             ref={replyInputRef}
                             type="text"
-                            placeholder="reply"
+                            placeholder="Drop your quack back"
                             value={replyInput}
                             onChange={(event) => setReplyInput(event.target.value)}
                             onKeyDown={(event) => {

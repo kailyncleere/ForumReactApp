@@ -4,11 +4,15 @@
     box-sizing: border-box;
 }
 
+h2 {
+    text-align: center;
+}
+
 .formBackground {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0d6efd;
+    background-color: rgb(199, 229, 246);
     width: 100vw;
     height: 100vh;
 }
@@ -39,8 +43,8 @@
 }
 
 button[type='submit'] {
-    background-color: forestgreen;
-    color: white;
+    background-color: rgb(224, 247, 250);
+    color: black;
 
 }
 

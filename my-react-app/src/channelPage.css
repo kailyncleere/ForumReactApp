@@ -2,18 +2,38 @@
     padding: 2rem;
 }
 
+.postBttn {
+    border-radius: 30px;
+    background-color: #4A6670;
+    padding: 5px;
+    margin-left: 5px;
+    color: white;
+    width: 10rem;
+    height: 3.25rem;
+}
+
 .channelForm {
     margin-bottom: 1rem;
 }
 
 .channelForm input {
     margin-right: 0.5rem;
+    padding: 1rem;
+    border-radius: 30px;
+    border: black solid 2px;
+}
+
+.channelName {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: black;
 }
 
 .messageItem {
     margin-left: calc(var(--level) * 20px);
     padding: 10px;
-    border: 2px solid #ccc;
+    border: 2px solid #000000;
     margin-top: 10px;
     border-radius: 5px;
 }
@@ -21,12 +41,18 @@
 .messageItem strong {
     font-weight: bold;
     margin-right: .5rem;
+    color: black;
 }
 
 .messageItem.level-even {
-    background-color: #e0f7fa;
+    background-color: rgb(224, 247, 250);
 }
 
 .messageItem.level-odd {
-    background-color: #c7e5f6;
+    background-color: rgb(199, 229, 246);
+}
+
+.replyBttn {
+    border:rgb(172, 174, 174) solid 2px;
+    border-radius: 30px;
 }

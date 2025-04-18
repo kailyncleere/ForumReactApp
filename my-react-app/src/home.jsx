@@ -67,57 +67,58 @@ function Home() {
 
     return (
         <div className="homeBackground">
-            <button className="logoutButton" onClick={handleLogout}>
-                Logout
-            </button>
-            <h1>Nurture Nature Community Forum</h1>
-            <div className="homeLayout">
-                <div className="channelListContainer">
-                    <div className="homeForm">
-                        <input
-                            ref={inputRef}
-                            className="homeInput"
-                            type="text"
-                            placeholder="Unleash your thoughts!"
-                            required
-                            value={input}
-                            onChange={(event) => setInput(event.target.value)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    addChannel();
-                                }
-                            }}
-                        />
-                        <button className="channelBttn" onClick={addChannel}>
-                            pawnder this
-                        </button>
-                        <hr />
-                        <div className="channelList">
-                            {channelNames.map((channel) => (
-                                <h5
-                                    key={channel.id}
-                                    className="channelLink"
-                                    onClick={() => handleChannelClick(channel.id)}
-                                >
-                                    {channel.name}
-                                </h5>
-                            ))}
+            <div className="background-blur"></div>
+            <div className="content">
+                <button className="logoutButton" onClick={handleLogout}>
+                    Logout
+                </button>
+                <h1>Nurture Nature Community Forum</h1>
+                <div className="homeLayout">
+                    <div className="channelListContainer">
+                        <div className="homeForm">
+                            <input
+                                ref={inputRef}
+                                className="homeInput"
+                                type="text"
+                                placeholder="Unleash your thoughts!"
+                                required
+                                value={input}
+                                onChange={(event) => setInput(event.target.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        addChannel();
+                                    }
+                                }}
+                            />
+                            <button className="channelBttn" onClick={addChannel}>
+                                Pawnder this
+                            </button>
+                            <hr />
+                            <div className="channelList">
+                                <h2 className="channelListTitle">Channels</h2>
+                                {channelNames.map((channel) => (
+                                    <h2
+                                        key={channel.id}
+                                        className="channelLink"
+                                        onClick={() => handleChannelClick(channel.id)}
+                                    >
+                                        {channel.name}
+                                    </h2>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="channelPageContainer">
-                    {selectedChannel ? (
-                        <>
-                            {console.log('Rendering ChannelPage with:', selectedChannel)}
+                    <div className="channelPageContainer">
+                        {selectedChannel ? (
                             <ChannelPage
                                 id={selectedChannel.id}
                                 channelName={selectedChannel.name || `Channel #${selectedChannel.id}`}
                             />
-                        </>
-                    ) : (
-                        <p>Select a channel to view its content</p>
-                    )}
+                        ) : (
+                            <p>Select a <strong>channel</strong> to view its content</p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
