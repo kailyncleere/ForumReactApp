@@ -105,4 +105,16 @@ app.post('/register', (request, response) => {
     })
 });
 
+app.post('/addMessage', (request, response) => {
+    const { text, author, channelId } = request.body;
+    const sql = 'INSERT INTO messages (text, author, channel_id) VALUES (?, ?, ?)';
+    db.query(sql, [text, author, channelId], (err, result) => {
+        if (err) {
+            console.log(err);
+            return response.status(500).json({ message: 'Internal Server Error' });
+        }
+        response.status(200).json({ success: true, message: 'Message added successfully!' });
+    });
+});
+
 app.listen(3000, () => console.log('Server Is Running on 3000'));

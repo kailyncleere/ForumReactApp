@@ -61,7 +61,8 @@ function Home() {
     };
 
     const handleLogout = () => {
-        navigate('/login');
+        localStorage.removeItem('username');
+        navigate('/');
     };
 
     return (

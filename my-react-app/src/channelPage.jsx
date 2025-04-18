@@ -34,9 +34,11 @@ function ChannelPage({ id, channelName }) {
 
     const addMessage = () => {
         if (input.trim() === '') return;
+        const username = localStorage.getItem('username');
         const newMessage = {
             id: Date.now(),
             text: input,
+            author: username || 'Anonymous',
             replies: [],
         };
         setMessages([...messages, newMessage]);
@@ -45,6 +47,7 @@ function ChannelPage({ id, channelName }) {
     };
 
     const addReply = (parentId, replyText) => {
+        const username = localStorage.getItem('username');
         const addNestedReply = (messages) =>
             messages.map((message) => {
                 if (message.id === parentId) {
@@ -55,6 +58,7 @@ function ChannelPage({ id, channelName }) {
                             {
                                 id: Date.now(),
                                 text: replyText,
+                                author: username || 'Anonymous',
                                 replies: [],
                             },
                         ],
@@ -142,7 +146,9 @@ function ChannelPage({ id, channelName }) {
                 className={`messageItem ${level % 2 === 0 ? 'level-even' : 'level-odd'}`}
                 style={{ '--level': level }}
             >
-                <div>{message.text}</div>
+                <div>
+                    <strong>{message.author || 'Anonymous'}:</strong> {message.text}
+                </div>
                 <button onClick={handleReplyButtonClick}>
                     {showReplyBox ? 'cancel' : 'reply'}
                 </button>

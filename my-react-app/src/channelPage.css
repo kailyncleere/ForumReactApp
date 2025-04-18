@@ -18,6 +18,11 @@
     border-radius: 5px;
 }
 
+.messageItem strong {
+    font-weight: bold;
+    margin-right: .5rem;
+}
+
 .messageItem.level-even {
     background-color: #e0f7fa;
 }
