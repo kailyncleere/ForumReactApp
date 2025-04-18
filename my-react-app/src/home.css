@@ -1,0 +1,17 @@
+* {}
+
+.homeBackground {}
+
+.homeForm {}
+
+.homeInput {}
+
+.channelButton {}
+
+.channelList {}
+
+.channelLink {}
+
+.channelLink:hover {
+    cursor: pointer;
+}
