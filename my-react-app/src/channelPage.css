@@ -1,0 +1,33 @@
+.channelBackground {
+    padding: 2rem;
+}
+
+.channelForm {
+    margin-bottom: 1rem;
+}
+
+.channelForm input {
+    margin-right: 0.5rem;
+}
+
+.messageItem {
+    margin-left: calc(var(--level) * 20px);
+    padding: 10px;
+    border: 2px solid #ccc;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.messageItem.level-even {
+    background-color: #e0f7fa;
+}
+
+.messageItem.level-odd {
+    background-color: #c7e5f6;
+}
+
+.homeButton {}
+
+.homeButton:hover {
+    cursor: pointer;
+}

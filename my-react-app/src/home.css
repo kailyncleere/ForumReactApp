@@ -15,3 +15,7 @@
 .channelLink:hover {
     cursor: pointer;
 }
+
+.logoutButton {
+    cursor: pointer;
+}
