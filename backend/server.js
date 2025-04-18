@@ -63,16 +63,18 @@ app.post('/login', (request, response) => { // Post request to the login route
         }
         if (result.length > 0) { // If the rows length is greater than 0, the user exists in the database
             return response.status(200).json({ // Send a 200 status code and a success message
-            message: 'Login Successful', // Set the message to login successful
+            success: true,
+            message: 'Login Successful!', // Set the message to login successful
             user: result[0] // Set the user to the first row of the result
         });
     }
     else {
-        response.json(
-            { message: 'User Not Found' } // Send a 404 status code and user not found message if the user does not exist in the database
+        response.json({
+            success: false, // Set the success to false
+            message: 'User Not Found' 
+            } // Send a 404 status code and user not found message if the user does not exist in the database
         );
     }
-       
     })
 });
 
@@ -89,16 +91,17 @@ app.post('/register', (request, response) => {
         }
         if (result.insertId) {
             return response.json({
+            success: true,
             message: 'Register Successful',
         });
         }
         else {
-            response.json(
-                { message: 'Failed!' }
+            response.json({
+                success: false,
+                message: 'Registration Failed!' 
+            }
             );
         }
-  
-       
     })
 });
 

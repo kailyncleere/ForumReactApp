@@ -4,23 +4,24 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './login'
 import Register from './register'
+import Home from './home'
+import ChannelPage from './channelPage'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <div> 
-
-    </div>
-    <div className='card'>
-      <Login />
-
-      <br></br>
-
-      <Register />
-    </div>
-    </>
+    <Router>
+      <div className='body'>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/channel/:id" element={<ChannelPage />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
