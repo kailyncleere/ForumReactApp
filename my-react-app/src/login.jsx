@@ -19,6 +19,7 @@ function Login() {
     if (response.data.success)
     {
       alert(response.data.message);
+      localStorage.setItem('username', formData.username);
       console.log('Navigating to home...');
       navigate('/home');
     }

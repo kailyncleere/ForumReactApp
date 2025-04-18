@@ -2,18 +2,13 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import './channelPage.css';
 import { useState, useEffect, useRef } from 'react';
 
-function ChannelPage() {
-    const { id } = useParams();
-    const location = useLocation();
+function ChannelPage({ id, channelName }) {
     const navigate = useNavigate();
-    const channelName = location.state?.channelName || `Channel #${id}`;
-
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const postInputRef = useRef(null);
 
     const storageKey = `messages_channel_${id}`;
-
 
     useEffect(() => {
         postInputRef.current?.focus();
@@ -26,6 +21,7 @@ function ChannelPage() {
             setMessages(storedMessages);
         } else {
             console.log('No valid messages found in localStorage.');
+            setMessages([]);
         }
     }, [id]);
 
@@ -77,10 +73,7 @@ function ChannelPage() {
 
     return (
         <div className="channelBackground">
-            <button className="homeButton" onClick={() => navigate('/home')}>
-                Home
-            </button>
-            <h2>{channelName}</h2>
+            <h2>{channelName || `Channel #${id}`}</h2>
             <div className="channelForm">
                 <input
                     ref={postInputRef}

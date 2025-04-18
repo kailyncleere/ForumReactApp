@@ -25,9 +25,3 @@
 .messageItem.level-odd {
     background-color: #c7e5f6;
 }
-
-.homeButton {}
-
-.homeButton:hover {
-    cursor: pointer;
-}

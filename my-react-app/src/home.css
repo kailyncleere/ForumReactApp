@@ -1,19 +1,37 @@
 * {}
 
-.homeBackground {}
+.homeBackground {
+    padding: 1rem;
+}
 
 .homeForm {}
 
 .homeInput {}
 
+.homeLayout {
+    display: flex;
+    gap: 1rem;
+}
+
 .channelButton {}
 
 .channelList {}
+
+.channelListContainer {
+    flex: 1.5;
+    max-width: 400px;
+}
 
 .channelLink {}
 
 .channelLink:hover {
     cursor: pointer;
+}
+
+.channelPageContainer {
+    flex: 2;
+    border-left: 1px solid #ccc;
+    padding-left: 1rem;
 }
 
 .logoutButton {
