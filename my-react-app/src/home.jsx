@@ -20,7 +20,8 @@ function Home() {
             const maxId = storedChannels.reduce((max, channel) => Math.max(max, channel.id), 0);
             setNextId(maxId + 1);
         } else {
-            console.log('No valid channels found in localStorage.');
+            console.log('No valid channels found in localStorage. Initializing default channels.');
+            initializeDefaultChannels();
         }
     }, []);
 
@@ -35,6 +36,26 @@ function Home() {
         inputRef.current?.focus();
     }, []);
 
+    const initializeDefaultChannels = () => {
+        const defaultChannels = [
+            { id: 1, name: 'lizards', posts: [{ id: 1, text: 'Welcome to the lizards channel!', author: 'Kailyn' }] },
+            { id: 2, name: 'cats', posts: [{ id: 2, text: 'Welcome to the cats channel!', author: 'Kailyn' }] },
+            { id: 3, name: 'dogs', posts: [{ id: 3, text: 'Welcome to the dogs channel!', author: 'Kailyn' }] },
+        ];
+
+
+        let postIdCounter = 1;
+        defaultChannels.forEach((channel) => {
+            channel.posts.forEach((post) => {
+                post.id = postIdCounter++;
+            });
+        });
+
+        setChannelNames(defaultChannels);
+        setNextId(4);
+        localStorage.setItem('channels', JSON.stringify(defaultChannels));
+    };
+
     const addChannel = () => {
         if (input.trim() === '') {
             alert('Please enter a channel name');
@@ -43,6 +64,7 @@ function Home() {
         const newChannel = {
             id: nextId,
             name: input,
+            posts: [],
         };
         setChannelNames([...channelNames, newChannel]);
         setInput('');
@@ -114,6 +136,7 @@ function Home() {
                             <ChannelPage
                                 id={selectedChannel.id}
                                 channelName={selectedChannel.name || `Channel #${selectedChannel.id}`}
+                                posts={selectedChannel.posts || []}
                             />
                         ) : (
                             <p>Select a <strong>channel</strong> to view its content</p>
