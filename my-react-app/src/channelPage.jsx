@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './channelPage.css';
 
-
 let globalMessageId = 1;
 
 function ChannelPage({ id, channelName, posts }) {
@@ -41,10 +40,11 @@ function ChannelPage({ id, channelName, posts }) {
             alert('Please enter a message');
             return;
         }
+        const loggedInUser = localStorage.getItem('username') || 'Anonymous';
         const newMessage = {
             id: globalMessageId++,
             text: input,
-            author: 'Kailyn',
+            author: loggedInUser,
             replies: [],
         };
         setMessages([...messages, newMessage]);
@@ -52,13 +52,14 @@ function ChannelPage({ id, channelName, posts }) {
     };
 
     const addReply = (parentId, replyText) => {
+        const loggedInUser = localStorage.getItem('username') || 'Anonymous';
         const updatedMessages = messages.map((message) => {
             if (message.id === parentId) {
                 return {
                     ...message,
                     replies: [
-                        ...message.replies,
-                        { id: globalMessageId++, text: replyText, author: 'Kailyn' },
+                        ...(message.replies || []),
+                        { id: globalMessageId++, text: replyText, author: loggedInUser },
                     ],
                 };
             }
