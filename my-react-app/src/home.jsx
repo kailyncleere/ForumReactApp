@@ -76,7 +76,10 @@ function Home() {
         const channel = channelNames.find((channel) => channel.id === id);
         console.log('Selected Channel:', channel);
         if (channel) {
-            setSelectedChannel(channel);
+            setSelectedChannel({
+                ...channel,
+                posts: channel.posts || [],
+            });
         } else {
             console.error(`Channel with id ${id} not found.`);
         }

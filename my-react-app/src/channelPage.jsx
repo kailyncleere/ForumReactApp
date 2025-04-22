@@ -28,6 +28,14 @@ function ChannelPage({ id, channelName, posts }) {
         }
     }, [messages, storageKey]);
 
+    useEffect(() => {
+        if (posts && Array.isArray(posts)) {
+            setMessages(posts);
+        } else {
+            setMessages([]);
+        }
+    }, [id, posts]);
+
     const addMessage = () => {
         if (input.trim() === '') {
             alert('Please enter a message');
@@ -81,7 +89,7 @@ function ChannelPage({ id, channelName, posts }) {
                 </button>
             </div>
             {messages.length === 0 ? (
-                <p>Chime in fur real!</p>
+                <p><strong>Chime in fur real!</strong></p>
             ) : (
                 <div>
                     <MessageList messages={messages} addReply={addReply} />
