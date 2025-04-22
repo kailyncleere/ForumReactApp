@@ -106,7 +106,7 @@ function ChannelPage({ id, channelName, posts }) {
 
         const handleReply = () => {
             if (replyInput.trim() === '') {
-                alert('Write a Quack Back!');
+                alert('Please write a reply');
                 return;
             }
             addReply(message.id, replyInput);
@@ -127,7 +127,7 @@ function ChannelPage({ id, channelName, posts }) {
                     <div>
                         <input
                             type="text"
-                            placeholder="Write a reply..."
+                            placeholder="Write a Quack Back!"
                             value={replyInput}
                             onChange={(e) => setReplyInput(e.target.value)}
                             onKeyDown={(e) => {
